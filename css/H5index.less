@@ -1,0 +1,230 @@
+@color:
+#727272,
+#f54343,
+#fff,
+#e3e3e3,
+#000,
+#f7f7f7,
+#efefef,
+#1a1a1a,
+#999;
+
+@font-face{
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.woff') format('woff'),
+  url('../fonts/icomoon.ttf')  format('truetype'),
+  url('../fonts/icomoon.svg#icomoon') format('svg');
+}
+[class^='icon_'],[class*='icon_']{
+  font-family:'icomoon';
+  font-weight:normal;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+.icon_com:before{
+  content:'\e901';
+}
+.icon_paper:before{
+  content:"\e902";
+}
+
+
+
+header{
+  height:.37rem;
+  padding:.21rem 0;
+  border-bottom:1px solid extract(@color,4);
+  background:extract(@color,3);
+  .logo{
+      width:1.95rem;
+      height:.37rem;
+      margin:0 auto;
+      img{
+         display:block;
+         width:100%;
+         height:100%;
+      }
+  }
+}
+
+
+nav{
+  height:.8rem;
+  line-height: .8rem;
+  font-size:0;
+  background:extract(@color,6);
+  a{
+    display:inline-block;
+    padding:0 .25rem;
+    font-size:.36rem;
+    text-align:center;
+    color:extract(@color,1);
+    &.cur{
+      color:extract(@color,2);
+    }
+  }
+}
+
+
+//foucs
+.focus{
+  position:relative;
+  img{
+    display:block;
+    width:100%;
+  }
+  .public{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:.8rem;
+    line-height:.8rem;
+  }
+  .bg{
+    .public;
+    background:-webkit-linear-gradient(transparent,extract(@color,5));
+  }
+  .tit{
+    z-index:9;
+    .public;
+    width:82%;
+    padding-left:.3rem;
+    font-size:.32rem;
+    color:extract(@color,3);
+  }
+  .swiper-pagination{
+    text-align: right;
+    left:auto;
+    right:.2rem;
+    width:auto;
+    color:extract(@color,3);
+    font-size:.21rem;
+  }
+  .swiper-pagination-current{
+    color:extract(@color,2);
+    font-size:.36rem;
+  }
+}
+
+//main 
+.main{
+  position: relative;
+}
+
+
+.item{
+  padding:.24rem .3rem .23rem;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
+  border-bottom:1px solid extract(@color,7);
+  overflow:hidden;
+  .i-pic{
+    width:1.82rem;
+    height:1.3rem;
+    margin-right:.3rem;
+    img{
+      display:block;
+      width:100%;
+      height:100%;
+    }
+  }
+  .i-txt{
+    -webkit-flex:1;
+    flex:1;
+    display:-webkit-flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .i-tit{
+      font-size:.36rem;
+      line-height:.44rem;
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+      overflow:hidden;
+      a{
+        color:extract(@color,8)
+      }
+    }
+  }
+  .i-des{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
+    justify-content: space-between;
+    font-size:.22rem;
+    color:extract(@color,9);
+    .i-info{
+      display:-webkit-box;
+      .i-label{
+        margin-left:.1rem;
+        padding:0 .1rem;
+        border:1px solid extract(@color,2);
+        border-radius:.03rem;
+        color:extract(@color,2);
+      }
+    }
+  }
+}
+
+
+
+.itemPic{
+  padding:.24rem .3rem .23rem;
+  border-bottom:1px solid extract(@color,7);
+  .i-tit{
+    font-size:.36rem;
+    line-height:.44rem;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+    a{
+      color:extract(@color,8)
+    }
+  }
+  .i-tit-box{
+    margin-bottom:.8rem;
+  }
+  .i-bigPic{
+    margin:.2rem 0;
+    img{
+      display:block;
+      width:100%;
+    }
+  }
+  .i-pics{
+    margin:.2rem 0;
+     ul{
+       margin-left:-.09rem;
+       overflow: hidden;
+     }
+     li{
+        float:left;
+        width:33.33%;
+        padding-left:.09rem;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        img{
+          display:block;
+          width:100%;
+        }
+      }
+  }
+  .i-des{
+    display: -webkit-flex;
+    justify-content: space-between;
+    font-size:.22rem;
+    color:extract(@color,9);
+    .icon_com{
+      margin-left:.1rem;
+    }
+    .icon_paper{
+      .icon_com;
+    }
+  }
+}

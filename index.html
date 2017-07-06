@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>凤凰新闻H5首页</title>
+    <!--meta:vp tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="keywords" content="凤凰,凤凰网,凤凰新媒体,凤凰卫视,凤凰卫视中文台,资讯台,电影台,欧洲台,美洲台,凤凰周刊,phoenix,phoenixtv" />
+    <meta name="description" content="凤凰网是中国领先的综合门户网站，提供含文图音视频的全方位综合新闻资讯、深度访谈、观点评论、财经产品、互动应用、分享社区等服务，同时与凤凰无线、凤凰宽频形成三屏联动，为全球主流华人提供互联网、无线通信、电视网三网融合无缝衔接的新媒体优质体验。" />
+    <!--reset 重置样式-->
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <!--swiper 插件的css样式-->
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+
+    <!--页面需要用到的css文件  less-->
+    <link rel="stylesheet/less" href="css/H5index.less"/>
+    <!--解析less文件-->
+    <script type="text/javascript" src="js/less-2.5.3.min.js"></script>
+
+</head>
+<body>
+<!--header begin-->
+<header>
+    <h1 class="logo">
+        <a href="#">
+            <img src="images/logo.png" alt=""/>
+        </a>
+    </h1>
+</header>
+<!--header end-->
+
+<!--nav begin-->
+<nav>
+    <a class="cur" href="#">头条</a>
+    <a href="#">视频</a>
+    <a href="#">财经</a>
+    <a href="#">凤凰号</a>
+    <a href="#">凤凰卫视</a>
+</nav>
+<!--nav end-->
+
+<section class="main" id="wrapper">
+    <div class="mainInner">
+        <!--focus begin-->
+        <div class="focus">
+            <div class="swiper-container">
+                <!--图片-->
+                <div class="swiper-wrapper"></div>
+
+                <!--分页器-->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <!--focus end-->
+
+        <div class="con">
+        </div>
+    </div>
+</section>
+
+
+<!--第三步: 造模版 <%js代码 %>  <%=输出的js代码%>-->
+<script type="text/template" id="focusTemplate">
+    <%$.each(focusTepData,function(index,item){%>
+    <div class="swiper-slide">
+        <a href="<%=item.link.weburl%>">
+            <img src="<%=item.thumbnail%>" alt="<%=item.title%>"/>
+            <span class="tit"><%=item.title%></span>
+            <span class="bg"></span>
+        </a>
+    </div>
+    <%})%>
+</script>
+
+
+<!--第三步  造模板 中间内容部分-->
+<script type="text/template" id="listTemplate">
+   <%$.each(listTepData,function(index,item){%>
+       <%if(item.style.images){%>
+   <section class="itemPic">
+       <div class="i-tit"><a href="<%=item.link.weburl%>"><%=item.title%></a></div>
+       <div class="i-pics">
+           <ul>
+               <li>
+                   <a href="<%=item.link.weburl%>">
+                       <img src="<%=item.style.images[0]%>" alt="<%=item.title%>"/>
+                   </a>
+               </li>
+               <li>
+                   <a href="<%=item.link.weburl%>">
+                       <img src="<%=item.style.images[1]%>" alt="<%=item.title%>"/>
+                   </a>
+               </li>
+               <li>
+                   <a href="<%=item.link.weburl%>">
+                       <img src="<%=item.style.images[2]%>" alt="<%=item.title%>"/>
+                   </a>
+               </li>
+           </ul>
+       </div>
+       <div class="i-des">
+           <div class="i-time">
+               <span class="i-source"><%=item.source%></span>
+               <span class="i-date"><%=item.updateTime%></span>
+           </div>
+           <div class="i-com"><%=item.comments%><span class="icon_paper"></span><%=item.commentsall%><span class="icon_com"></span></div>
+       </div>
+   </section>
+       <%}else if(item.type=='phvideo'){%>
+   <section class="itemPic">
+       <div class="i-tit"><a href="<%=item.link.weburl%>"><%=item.title%></a></div>
+       <div class="i-bigPic">
+           <a href="<%=item.link.weburl%>"><img src="<%=item.thumbnail%>" alt=""/></a>
+       </div>
+       <div class="i-des">
+           <div class="i-time">
+               <span class="i-source"><%=item.source%></span>
+               <span class="i-date"><%=item.updateTime%></span>
+           </div>
+           <div class="i-com"><%=item.commentsall%><span class="icon_com"></span></div>
+       </div>
+   </section>
+       <%}else if(item.thumbnail){%>
+   <section class="item">
+       <!--左图-->
+       <div class="i-pic">
+           <a href="<%=item.link.weburl%>">
+               <img src="<%=item.thumbnail%>" alt="<%=item.title%>"/>
+           </a>
+       </div>
+       <!--右文-->
+       <div class="i-txt">
+           <!--标题-->
+           <div class="i-tit">
+               <a href="<%=item.link.weburl%>"><%=item.title%></a>
+           </div>
+           <!--详情-->
+           <div class="i-des">
+               <div class="i-time"><%=item.updateTime%></div>
+               <div class="i-info">
+                   <div class="i-com"><%=item.commentsall%><span class="icon_com"></span></div>
+                   <div class="i-label">专题</div>
+               </div>
+           </div>
+       </div>
+   </section>
+       <%}else{%>
+   <section class="itemPic">
+       <div class="i-tit i-tit-box"><a href="<%=item.link.weburl%>"><%=item.title%></a></div>
+       <div class="i-des">
+           <div class="i-time">
+               <span class="i-source"><%=item.source%></span>
+               <span class="i-date"><%=item.updateTime%></span>
+           </div>
+           <div class="i-com"><%=item.commentsall%><span class="icon_com"></span></div>
+       </div>
+   </section>
+       <%}%>
+   <%})%>
+</script>
+
+
+
+
+
+
+
+
+<!--第一步 导入ejs.min.js 文件-->
+<script type="text/javascript" src="js/ejs.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<!--swiper插件需要用到的js文件-->
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<!--页面需要用到的js文件-->
+<script type="text/javascript" src="js/H5index.js"></script>
+</body>
+</html>
